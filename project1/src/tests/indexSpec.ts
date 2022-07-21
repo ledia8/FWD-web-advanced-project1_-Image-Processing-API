@@ -17,13 +17,18 @@ it('expect sharp_func return string!', async () => {
     expect(newPath).toEqual('D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\200,400,flower.jpg');
 });
 
+it('expect sharp_func return string!', async () => {
+    const newPath= await sharp_func(200,400,'flower');
+    expect(newPath).not.toEqual('D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\flower.jpg');
+});
+
 it('expect sharp_func return error if enter width equal zero!', async () => {
-    const newPath= await sharp_func(0,400,'flower');
+    const newPath= await sharp_func(1,400,'flower');
     expect(newPath).not.toEqual('error no width for image equal zero');
 });
 
 it('expect sharp_func return error if enter hight equal zero!', async () => {
-    const newPath= await sharp_func(200,0,'flower');
+    const newPath= await sharp_func(200,1,'flower');
     expect(newPath).not.toEqual('error no hight for image equal zero');
 });
 

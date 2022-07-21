@@ -19,7 +19,9 @@ const app = (0, express_1.default)();
 const sharp_app = (0, sharp_1.default)();
 ;
 const sharp_func = (width, hight, name) => __awaiter(void 0, void 0, void 0, function* () {
-    let newpath = 'D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\' + width + ',' + hight + ',' + name + '.jpg';
+    let newpath = `${path_1.default.resolve()}\\thumbnail\\${width},${hight},${name}.jpg`;
+    //let newpath1: string = 'D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\'+width+ ',' +hight+','+name+'.jpg';
+    console.log("newpath........." + newpath);
     try {
         yield (0, sharp_1.default)(`${path_1.default.resolve()}\\img\\${name}.jpg`)
             .resize(width, hight, {

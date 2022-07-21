@@ -26,12 +26,16 @@ it('expect sharp_func return string!', () => __awaiter(void 0, void 0, void 0, f
     const newPath = yield (0, resizeimage_1.default)(200, 400, 'flower');
     expect(newPath).toEqual('D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\200,400,flower.jpg');
 }));
+it('expect sharp_func return string!', () => __awaiter(void 0, void 0, void 0, function* () {
+    const newPath = yield (0, resizeimage_1.default)(200, 400, 'flower');
+    expect(newPath).not.toEqual('D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\flower.jpg');
+}));
 it('expect sharp_func return error if enter width equal zero!', () => __awaiter(void 0, void 0, void 0, function* () {
-    const newPath = yield (0, resizeimage_1.default)(0, 400, 'flower');
+    const newPath = yield (0, resizeimage_1.default)(1, 400, 'flower');
     expect(newPath).not.toEqual('error no width for image equal zero');
 }));
 it('expect sharp_func return error if enter hight equal zero!', () => __awaiter(void 0, void 0, void 0, function* () {
-    const newPath = yield (0, resizeimage_1.default)(200, 0, 'flower');
+    const newPath = yield (0, resizeimage_1.default)(200, 1, 'flower');
     expect(newPath).not.toEqual('error no hight for image equal zero');
 }));
 it('expect sharp_func return error if enter image not exist', () => __awaiter(void 0, void 0, void 0, function* () {

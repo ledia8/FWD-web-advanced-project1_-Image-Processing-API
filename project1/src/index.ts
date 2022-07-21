@@ -1,5 +1,6 @@
 import express from 'express';
 import sharp_func from "./Functionality/resizeimage";
+import path from 'path';
 import fs from 'fs'
 
 const app = express();
@@ -22,16 +23,17 @@ app.get('/data', async (req:express.Request, res:express.Response) :Promise<void
     let w:number = Number(data_arr[0]) ;
     let h:number = Number(data_arr[1]) as number;
     let name:string = (data_arr[2])as string;
-    let path:string = 'D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\'+w+ ',' +h+','+name+'.jpg'
+    
+    let oldpath:string = `${path.resolve()}\\thumbnail\\${w},${h},${name}.jpg`;
     let newpath:String="";
-    if(!(fs.existsSync(path))){
+    if(!(fs.existsSync(oldpath))){
         //create the img
-        newpath = await sharp_func(w,h,name);
+        newpath = await sharp_func(Number(w),Number(h),String(name));
     }
     res.sendFile(String(newpath));
 });
 
-app.use((req, res, next) => {
+app.use((req:express.Request, res:express.Response, next) => {
     res.status(404).send("something is wrong! check your inputs")
 });
 

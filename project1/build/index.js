@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const resizeimage_1 = __importDefault(require("./Functionality/resizeimage"));
+const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 const app = (0, express_1.default)();
 const port = 3000;
@@ -31,11 +32,11 @@ app.get('/data', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let w = Number(data_arr[0]);
     let h = Number(data_arr[1]);
     let name = (data_arr[2]);
-    let path = 'D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\' + w + ',' + h + ',' + name + '.jpg';
+    let oldpath = `${path_1.default.resolve()}\\thumbnail\\${w},${h},${name}.jpg`;
     let newpath = "";
-    if (!(fs_1.default.existsSync(path))) {
+    if (!(fs_1.default.existsSync(oldpath))) {
         //create the img
-        newpath = yield (0, resizeimage_1.default)(w, h, name);
+        newpath = yield (0, resizeimage_1.default)(Number(w), Number(h), String(name));
     }
     res.sendFile(String(newpath));
 }));
