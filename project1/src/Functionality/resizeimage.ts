@@ -15,8 +15,9 @@ interface img{
 
 
 const sharp_func = async(width:number,hight:number,name:string): Promise<String> =>{
-    let newpath:string = `${path.resolve()}\\thumbnail\\${width},${hight},${name}.jpg`;
-    //let newpath1: string = 'D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\'+width+ ',' +hight+','+name+'.jpg';
+
+    let imgName:string = width + ',' + hight+','+name+'.jpg';
+    let newpath:string = path.resolve("./thumbnail", imgName);
     console.log("newpath........."+newpath);
     
     try{
@@ -47,3 +48,18 @@ const createfolder = (): void =>{
 
 createfolder();
 
+
+
+
+
+
+
+
+
+
+
+
+ // let newpath0:string = path.resolve(__dirname,"thumbnail\\");
+    // let newpath:string= newpath0 +'\\'+ width + ',' + hight+','+name+'.jpg';
+   // let newpath:string = `${path.resolve()}\\thumbnail\\${width},${hight},${name}.jpg`;
+    //let newpath1: string = 'D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\'+width+ ',' +hight+','+name+'.jpg';

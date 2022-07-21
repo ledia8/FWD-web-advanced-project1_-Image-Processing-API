@@ -19,8 +19,8 @@ const app = (0, express_1.default)();
 const sharp_app = (0, sharp_1.default)();
 ;
 const sharp_func = (width, hight, name) => __awaiter(void 0, void 0, void 0, function* () {
-    let newpath = `${path_1.default.resolve()}\\thumbnail\\${width},${hight},${name}.jpg`;
-    //let newpath1: string = 'D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\'+width+ ',' +hight+','+name+'.jpg';
+    let imgName = width + ',' + hight + ',' + name + '.jpg';
+    let newpath = path_1.default.resolve("./thumbnail", imgName);
     console.log("newpath........." + newpath);
     try {
         yield (0, sharp_1.default)(`${path_1.default.resolve()}\\img\\${name}.jpg`)
@@ -47,3 +47,7 @@ const createfolder = () => {
     }
 };
 createfolder();
+// let newpath0:string = path.resolve(__dirname,"thumbnail\\");
+// let newpath:string= newpath0 +'\\'+ width + ',' + hight+','+name+'.jpg';
+// let newpath:string = `${path.resolve()}\\thumbnail\\${width},${hight},${name}.jpg`;
+//let newpath1: string = 'D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\'+width+ ',' +hight+','+name+'.jpg';

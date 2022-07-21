@@ -37,8 +37,10 @@ app.get('/data', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (!(fs_1.default.existsSync(oldpath))) {
         //create the img
         newpath = yield (0, resizeimage_1.default)(Number(w), Number(h), String(name));
+        console.log("new path from if ------------" + newpath);
     }
-    res.sendFile(String(newpath));
+    console.log("new path out if ------------" + newpath);
+    res.sendFile(String(oldpath));
 }));
 app.use((req, res, next) => {
     res.status(404).send("something is wrong! check your inputs");

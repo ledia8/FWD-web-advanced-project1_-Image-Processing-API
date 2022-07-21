@@ -29,8 +29,10 @@ app.get('/data', async (req:express.Request, res:express.Response) :Promise<void
     if(!(fs.existsSync(oldpath))){
         //create the img
         newpath = await sharp_func(Number(w),Number(h),String(name));
+        console.log("new path from if ------------"+ newpath);
     }
-    res.sendFile(String(newpath));
+    console.log("new path out if ------------"+ newpath);
+    res.sendFile(String(oldpath));
 });
 
 app.use((req:express.Request, res:express.Response, next) => {
