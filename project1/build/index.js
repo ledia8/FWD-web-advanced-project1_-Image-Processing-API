@@ -32,7 +32,10 @@ app.get('/data', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let w = Number(data_arr[0]);
     let h = Number(data_arr[1]);
     let name = (data_arr[2]);
-    let oldpath = `${path_1.default.resolve()}\\thumbnail\\${w},${h},${name}.jpg`;
+    let imgName = w + ',' + h + ',' + name + '.jpg';
+    let newpath0 = path_1.default.resolve("./thumbnail", imgName);
+    let oldpath = path_1.default.resolve("./thumbnail", imgName);
+    // let oldpath:string = `${path.resolve()}\\thumbnail\\${w},${h},${name}.jpg`;
     let newpath = "";
     if (!(fs_1.default.existsSync(oldpath))) {
         //create the img

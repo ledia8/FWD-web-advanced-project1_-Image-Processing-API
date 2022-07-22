@@ -21,7 +21,8 @@ const sharp_func = async(width:number,hight:number,name:string): Promise<String>
     console.log("newpath........."+newpath);
     
     try{
-        await sharp(`${path.resolve()}\\img\\${name}.jpg`)
+        let pathOfOldImg = path.resolve("./img",name+".jpg");//`${path.resolve()}\\img\\${name}.jpg`
+        await sharp(pathOfOldImg)
         .resize(width, hight, {
         fit: 'contain',
         position: 'right top',

@@ -15,7 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const supertest_1 = __importDefault(require("supertest"));
 const index_1 = __importDefault(require("../index"));
 const resizeimage_1 = __importDefault(require("../Functionality/resizeimage"));
+const path_1 = __importDefault(require("path"));
 const request = (0, supertest_1.default)(index_1.default);
+//path.resolve("./thumbnail", imgName)
 describe('Test endpoint responses', () => {
     it('gets the api endpoint', () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield request.get('/api');
@@ -24,11 +26,13 @@ describe('Test endpoint responses', () => {
 });
 it('expect sharp_func return string!', () => __awaiter(void 0, void 0, void 0, function* () {
     const newPath = yield (0, resizeimage_1.default)(200, 400, 'flower');
-    expect(newPath).toEqual('D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\200,400,flower.jpg');
+    let imgName = '200,400,flower.jpg';
+    expect(newPath).toEqual(path_1.default.resolve('./thumbnail', imgName));
 }));
 it('expect sharp_func return string!', () => __awaiter(void 0, void 0, void 0, function* () {
     const newPath = yield (0, resizeimage_1.default)(200, 400, 'flower');
-    expect(newPath).not.toEqual('D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\flower.jpg');
+    let imgName = 'flower.jpg';
+    expect(newPath).not.toEqual(path_1.default.resolve('./thumbnail', imgName));
 }));
 it('expect sharp_func return error if enter width equal zero!', () => __awaiter(void 0, void 0, void 0, function* () {
     const newPath = yield (0, resizeimage_1.default)(1, 400, 'flower');

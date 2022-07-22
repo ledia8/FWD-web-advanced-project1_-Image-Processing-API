@@ -23,8 +23,13 @@ app.get('/data', async (req:express.Request, res:express.Response) :Promise<void
     let w:number = Number(data_arr[0]) ;
     let h:number = Number(data_arr[1]) as number;
     let name:string = (data_arr[2])as string;
+    let imgName:string = w + ',' + h+','+name+'.jpg';
+
+    let newpath0:string = path.resolve("./thumbnail", imgName);
     
-    let oldpath:string = `${path.resolve()}\\thumbnail\\${w},${h},${name}.jpg`;
+    let oldpath:string =path.resolve("./thumbnail", imgName);
+
+    // let oldpath:string = `${path.resolve()}\\thumbnail\\${w},${h},${name}.jpg`;
     let newpath:String="";
     if(!(fs.existsSync(oldpath))){
         //create the img

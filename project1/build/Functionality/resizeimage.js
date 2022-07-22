@@ -23,7 +23,8 @@ const sharp_func = (width, hight, name) => __awaiter(void 0, void 0, void 0, fun
     let newpath = path_1.default.resolve("./thumbnail", imgName);
     console.log("newpath........." + newpath);
     try {
-        yield (0, sharp_1.default)(`${path_1.default.resolve()}\\img\\${name}.jpg`)
+        let pathOfOldImg = path_1.default.resolve("./img", name + ".jpg"); //`${path.resolve()}\\img\\${name}.jpg`
+        yield (0, sharp_1.default)(pathOfOldImg)
             .resize(width, hight, {
             fit: 'contain',
             position: 'right top',

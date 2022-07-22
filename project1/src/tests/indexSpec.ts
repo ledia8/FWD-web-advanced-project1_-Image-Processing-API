@@ -1,8 +1,11 @@
 import supertest from 'supertest';
 import app from '../index';
 import sharp_func from "../Functionality/resizeimage";
+import path from 'path';
 
 const request = supertest(app);
+
+//path.resolve("./thumbnail", imgName)
 
 
 describe('Test endpoint responses', () => {
@@ -14,12 +17,14 @@ describe('Test endpoint responses', () => {
 
 it('expect sharp_func return string!', async () => {
     const newPath= await sharp_func(200,400,'flower');
-    expect(newPath).toEqual('D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\200,400,flower.jpg');
+    let imgName = '200,400,flower.jpg';
+    expect(newPath).toEqual(path.resolve('./thumbnail',imgName));
 });
 
 it('expect sharp_func return string!', async () => {
     const newPath= await sharp_func(200,400,'flower');
-    expect(newPath).not.toEqual('D:\\udacity_web-advanced-FWD\\project1\\thumbnail\\flower.jpg');
+    let imgName = 'flower.jpg';
+    expect(newPath).not.toEqual(path.resolve('./thumbnail',imgName));
 });
 
 it('expect sharp_func return error if enter width equal zero!', async () => {
