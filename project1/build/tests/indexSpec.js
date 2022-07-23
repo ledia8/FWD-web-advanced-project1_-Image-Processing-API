@@ -24,14 +24,20 @@ describe('Test endpoint responses', () => {
         expect(response.status).toBe(200);
     }));
 });
+describe('Test endpoint resize', () => {
+    it('gets the api endpoint', () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield request.get('/data?data=500,500,flower');
+        expect(response.status).toBe(200);
+    }));
+});
 it('expect sharp_func return string!', () => __awaiter(void 0, void 0, void 0, function* () {
     const newPath = yield (0, resizeimage_1.default)(200, 400, 'flower');
-    let imgName = '200,400,flower.jpg';
+    const imgName = '200,400,flower.jpg';
     expect(newPath).toEqual(path_1.default.resolve('./thumbnail', imgName));
 }));
 it('expect sharp_func return string!', () => __awaiter(void 0, void 0, void 0, function* () {
     const newPath = yield (0, resizeimage_1.default)(200, 400, 'flower');
-    let imgName = 'flower.jpg';
+    const imgName = 'flower.jpg';
     expect(newPath).not.toEqual(path_1.default.resolve('./thumbnail', imgName));
 }));
 it('expect sharp_func return error if enter width equal zero!', () => __awaiter(void 0, void 0, void 0, function* () {
